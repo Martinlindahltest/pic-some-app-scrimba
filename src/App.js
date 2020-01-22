@@ -12,7 +12,7 @@ function App(props) {
 
   const context = useContext(Context)
 
-  console.log(context)
+  console.log('context', context)
   return (
     <div>
       <Header />
