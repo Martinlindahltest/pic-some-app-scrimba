@@ -10,8 +10,8 @@ function Image({ className, img }) {
     const cartIcon = hovered ? <i className="ri-add-circle-line cart"></i> : null
 
     return (
-        <div className={`${className} image-container`}>
-            <img onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} alt='' src={img.url} className="image-grid" />
+        <div onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} className={`${className} image-container`}>
+            <img alt='' src={img.url} className="image-grid" />
             {heartIcon}
             {cartIcon}
         </div>
