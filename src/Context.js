@@ -13,15 +13,14 @@ function ContextProvider({ children }) {
     }
 
     const toggleFavorite = (id) => {
-        const result = allPhotos.filter(thisPhoto => thisPhoto.id === id);
-        console.log('togglefavorit', result[0])
-        console.log(allPhotos)
-        setAllPhotos([
-            ...allPhotos,
-            result[0].isFavorite = !result[0].isFavorite
-        ])
-
-
+        const uppdatedArray = allPhotos.map(photoObject => {
+            //    if(photoObject.is)
+            if (photoObject.id === id) {
+                photoObject.isFavorite = !photoObject.isFavorite
+            }
+            return photoObject
+        })
+        setAllPhotos(uppdatedArray)
     }
 
     useEffect(() => {
@@ -32,7 +31,6 @@ function ContextProvider({ children }) {
         <Context.Provider value={{ allPhotos: allPhotos, toggleFavorite: toggleFavorite }}>
             {children}
         </Context.Provider >
-
     )
 }
 
