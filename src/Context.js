@@ -14,7 +14,12 @@ function ContextProvider({ children }) {
 
     const toggleFavorite = (id) => {
         const result = allPhotos.filter(thisPhoto => thisPhoto.id === id);
-        console.log('togglefavorit', result)
+        console.log('togglefavorit', result[0])
+        console.log(allPhotos)
+        setAllPhotos([
+            ...allPhotos,
+            result[0].isFavorite = !result[0].isFavorite
+        ])
 
 
     }
@@ -22,8 +27,6 @@ function ContextProvider({ children }) {
     useEffect(() => {
         fetchData();
     }, []);
-
-    toggleFavorite('1')
 
     return (
         <Context.Provider value={{ allPhotos: allPhotos, toggleFavorite: toggleFavorite }}>
@@ -34,7 +37,3 @@ function ContextProvider({ children }) {
 }
 
 export { ContextProvider, Context }
-
-//1. Add a toggleFavorite method to context. 
-//It should take an `id` parameter and update the array of allPhotos by flipping the `isFavorited` property of the photo 
-//with the matching `id`
