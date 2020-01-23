@@ -1,10 +1,14 @@
-import React from "react"
+import React, { useState } from "react"
 
 function Image({ className, img }) {
 
+    const [hovered, setHovered] = useState(false)
+
+    console.log(img.id, hovered)
+
     return (
         <div className={`${className} image-container`}>
-            <img onMouseEnter={() => console.log('mousenter')} onMouseLeave={() => console.log('mouseleave')} alt='' src={img.url} className="image-grid" />
+            <img onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} alt='' src={img.url} className="image-grid" />
         </div>
     )
 }
