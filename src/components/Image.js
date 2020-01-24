@@ -6,19 +6,24 @@ function Image({ className, img, toggleFavorite }) {
 
     //console.log('img.id', img.id, 'img.isFavorite', img.isFavorite)
 
-    let heartClassName = "ri-heart-line favorite"
-
-    if (img.isFavorite) {
-        heartClassName = "ri-heart-fill favorite"
+    let heartIcon = (fillHeart) => {
+        if (fillHeart) {
+            return <i className="ri-heart-fill favorite" onClick={() => toggleFavorite(img.id)}></i>
+        }
+        else if (hovered) {
+            return <i className="ri-heart-line favorite" onClick={() => toggleFavorite(img.id)}></i>
+        }
+        else {
+            return null
+        }
     }
 
-    const heartIcon = hovered ? <i onClick={() => toggleFavorite(img.id)} className={heartClassName}></i> : null
     const cartIcon = hovered ? <i className="ri-add-circle-line cart"></i> : null
 
     return (
         <div onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} className={`${className} image-container`}>
             <img alt='' src={img.url} className="image-grid" />
-            {heartIcon}
+            {heartIcon(img.isFavorite)}
             {cartIcon}
         </div>
     )
