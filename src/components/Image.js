@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import PropTypes from 'prop-types';
 
 
-function Image({ className, img, toggleFavorite }) {
+function Image({ className, img, toggleFavorite, setCartItems, addToCart }) {
 
     const [hovered, setHovered] = useState(false)
 
@@ -20,7 +20,7 @@ function Image({ className, img, toggleFavorite }) {
         }
     }
 
-    const cartIcon = hovered ? <i className="ri-add-circle-line cart"></i> : null
+    const cartIcon = hovered ? <i className="ri-add-circle-line cart" onClick={() => setCartItems(addToCart(img))}></i> : null
 
 
 
