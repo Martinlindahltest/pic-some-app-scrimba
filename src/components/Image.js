@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import PropTypes from 'prop-types';
 
 
-function Image({ className, img, toggleFavorite, setCartItems, addToCart }) {
+function Image({ className, img, toggleFavorite, addToCart, cartItems }) {
 
     const [hovered, setHovered] = useState(false)
 
@@ -20,9 +20,12 @@ function Image({ className, img, toggleFavorite, setCartItems, addToCart }) {
         }
     }
 
-    const cartIcon = hovered ? <i className="ri-add-circle-line cart" onClick={() => setCartItems(addToCart(img))}></i> : null
+    let cartIcon = hovered ? <i className="ri-add-circle-line cart" onClick={() => addToCart(img)}></i> : null
 
-
+    //console.log('cartItems', cartItems)
+    if (cartItems.some(e => e.id === img.id)) {
+        cartIcon = <i className="ri-shopping-cart-fill cart"></i>
+    }
 
 
     return (

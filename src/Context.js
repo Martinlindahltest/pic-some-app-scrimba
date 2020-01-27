@@ -24,9 +24,8 @@ function ContextProvider({ children }) {
         setAllPhotos(uppdatedArray)
     }
 
-    const addToCart = (product) => {
-        let newArray = [...cartItems, product]
-        return newArray
+    const addToCart = (newProduct) => {
+        setCartItems(prevCartItems => [...prevCartItems, newProduct])
     }
 
     useEffect(() => {
@@ -40,7 +39,7 @@ function ContextProvider({ children }) {
 
 
     return (
-        <Context.Provider value={{ allPhotos, toggleFavorite, addToCart, setCartItems }}>
+        <Context.Provider value={{ allPhotos, toggleFavorite, addToCart, cartItems }}>
             {children}
         </Context.Provider >
     )

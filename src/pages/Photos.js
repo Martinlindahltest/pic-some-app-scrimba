@@ -7,11 +7,11 @@ export default function Photos() {
 
     const allPhotosContext = useContext(Context)
     // console.log('context', allPhotosContext)
-    const { allPhotos, toggleFavorite, setCartItems, addToCart } = allPhotosContext
+    const { allPhotos, toggleFavorite, addToCart, cartItems } = allPhotosContext
 
     const jsxArray = allPhotos.map((img, i) =>
         <Image
-            setCartItems={setCartItems}
+            cartItems={cartItems}
             addToCart={addToCart}
             toggleFavorite={toggleFavorite}
             key={img.id} img={img}
