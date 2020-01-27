@@ -1,4 +1,6 @@
 import React, { useState } from "react"
+import PropTypes from 'prop-types';
+
 
 function Image({ className, img, toggleFavorite }) {
 
@@ -20,6 +22,9 @@ function Image({ className, img, toggleFavorite }) {
 
     const cartIcon = hovered ? <i className="ri-add-circle-line cart"></i> : null
 
+
+
+
     return (
         <div onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} className={`${className} image-container`}>
             <img alt='' src={img.url} className="image-grid" />
@@ -27,6 +32,17 @@ function Image({ className, img, toggleFavorite }) {
             {cartIcon}
         </div>
     )
+
+
+}
+
+Image.propTypes = {
+    className: PropTypes.string,
+    img: PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        url: PropTypes.string.isRequired,
+        isFavorite: PropTypes.bool
+    })
 }
 
 export default Image
